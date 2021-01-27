@@ -1,5 +1,5 @@
 """
-Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>
+Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>.
 
 This file is part of Tracker.
 
@@ -24,7 +24,15 @@ from pyroute2 import IPRoute
 
 
 class TrackerDeepSleep:
+    """Deepsleep tracker module.
+
+    Used to track iphones and other devices that disconnects from the
+    network when the screen is locked.
+
+    """
+
     def defaults(self):
+        """Apply module defaults."""
         return dict(
             interval=10,
             max_retries=10,
@@ -32,6 +40,7 @@ class TrackerDeepSleep:
         )
 
     def init(self):
+        """Initialize module."""
         if "ip" not in self.config:
             logging.critical("'ip' must be specified when using deepsleep")
             return False
@@ -39,6 +48,7 @@ class TrackerDeepSleep:
         return True
 
     def track(self):
+        """Run device tracking."""
         for _ in range(self.config["max_retries"]):
             # Send packet on port UDP/5353
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

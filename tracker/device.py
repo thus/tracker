@@ -1,5 +1,5 @@
 """
-Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>
+Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>.
 
 This file is part of Tracker.
 
@@ -27,7 +27,7 @@ from modules import TrackerModule
 
 
 def on_connect(client, userdata, flags, rc):
-    """Called when the broker responds to our connection request.
+    """Call when the broker responds to our connection request.
 
     Args:
       client:   The client instance.
@@ -102,6 +102,14 @@ def connect_mqtt(name, config):
 
 
 def device_track(name, device, config):
+    """Run tracker process.
+
+    Args:
+      name (str):    Name of the device.
+      device (dict): Device config.
+      config (dict): Application config.
+
+    """
     m = TrackerModule(module=device["module"], device=device, config=config)
 
     if m.init() is False:

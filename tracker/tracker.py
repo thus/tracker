@@ -1,5 +1,5 @@
 """
-Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>
+Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>.
 
 This file is part of Tracker.
 
@@ -26,10 +26,12 @@ from device import devices_start_tracking
 
 
 def signal_handler(signum, frame):
+    """Handle signals."""
     globals.terminate = True
 
 
 def main():
+    """Run main function."""
     globals.initialize()
 
     signal.signal(signal.SIGINT, signal_handler)

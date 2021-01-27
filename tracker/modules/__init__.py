@@ -1,5 +1,5 @@
 """
-Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>
+Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>.
 
 This file is part of Tracker.
 
@@ -27,7 +27,10 @@ MODULES = {
 
 
 class TrackerModule:
+    """Module used to run device trackers."""
+
     def __init__(self, *, module: str, device: dict, config: dict):
+        """Initialize tracker module object."""
         if module in MODULES:
             self.module = MODULES[module]
         else:
@@ -49,7 +52,7 @@ class TrackerModule:
             self.module.config["interval"] = MODULE_DEFAULT_INTERVAL
 
     def init(self):
-        """Initializes the tracker module.
+        """Initialize the tracker module.
 
         Returns:
           True on success, False otherwise.
@@ -62,7 +65,7 @@ class TrackerModule:
         return status
 
     def track(self):
-        """Runs the tracker module.
+        """Run the tracker module.
 
         Returns:
           True if device is present, False otherwise.
@@ -71,7 +74,7 @@ class TrackerModule:
         return self.module.track()
 
     def deinit(self):
-        """Deinitializes the tracker module.
+        """Deinitialize the tracker module.
 
         Returns:
           True on success, False otherwise.

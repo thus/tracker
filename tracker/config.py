@@ -1,5 +1,5 @@
 """
-Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>
+Copyright (C) 2020 Mats Klepsland <mats.klepsland@gmail.com>.
 
 This file is part of Tracker.
 
@@ -72,7 +72,6 @@ def config_apply_defaults(conf):
       Dictionary containing config, with added defaults.
 
     """
-
     if not _dict_nested_isset(conf, ["state", "home"]):
         _dict_nested_set(conf, ["state", "home"], DEFAULT_STATE_HOME)
 
