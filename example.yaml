@@ -1,0 +1,51 @@
+# Example configuration file for Tracker
+---
+
+# Configure logging (uses logging.config.dictConfig)
+logging:
+  version: 1
+  formatters:
+    standard:
+      format: '%(asctime)s (%(levelname)s) %(message)s'
+  handlers:
+    default:
+      class: logging.StreamHandler
+      level: INFO
+      formatter: standard
+  loggers:
+    '':
+      level: INFO
+      handlers:
+        - default
+
+# Default state
+state:
+  home: "home"
+  not_home: "not_home"
+
+# Default module config
+module:
+  deepsleep:
+    # How often to check device (in seconds)
+    interval: 5
+
+    # When a iPhone is locked we often have to try multiple times before
+    # we get an answer.
+    max_retries: 10
+
+    # How to long to wait between the retries (in seconds)
+    retry_interval: 2
+
+# MQTT config
+mqtt:
+  broker: "mqtt.local"
+  port: 1883
+  username: "tracker"
+  password: "some-awesome-random-generated-password"
+  topic_prefix: "tracker/location/"
+
+# List of devices to track
+device_track:
+  - my_iphone:
+      module: deepsleep
+      ip: 1.2.3.4
