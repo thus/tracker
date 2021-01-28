@@ -18,7 +18,7 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 import argparse
 
-DEFAULT_CONFIG_FILE = "/etc/tracker.yaml"
+DEFAULT_CONFIG_FILE = "/etc/tracker/tracker.yaml"
 
 
 def read_args():
