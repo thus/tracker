@@ -34,6 +34,7 @@ Tracker can be installed in the following way.
 
 Start by installing the Tracker Python module:
 ```bash
+root@server:~/tracker# pip3 install -r requirements.txt
 root@server:~/tracker# python3 setup.py install
 ```
 
