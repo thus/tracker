@@ -28,6 +28,32 @@ I had to do my own implementation, since I wanted to track devices on an other
 subnet then the Home Assistant server, which would not work with iphonedetect,
 since the server was not getting ARP table entries for the devices.
 
+## Installation
+
+Tracker can be installed in the following way.
+
+Start by installing the Tracker Python module:
+```bash
+root@server:~/tracker# python3 setup.py install
+```
+
+Then add a configuration file for Tracker. The simplest way to do this is to
+copy the example configuration file from the repository and edit it to fit your
+needs:
+```bash
+root@server:~/tracker# mkdir /etc/tracker
+root@server:~/tracker# cp example.yaml /etc/tracker/tracker.yaml
+```
+
+And then finally, install the Tracker systemd service:
+```bash
+root@server:~/tracker# cp tracker.service /etc/systemd/system
+root@server:~/tracker# systemctl daemon-reload
+root@server:~/tracker# systemctl enable tracker.service
+root@server:~/tracker# systemctl start tracker.service
+```
+Above, we also tell systemd to start Tracker on boot.
+
 ## Use together with Home Assistant
 
 ### Install Mosquitto broker
