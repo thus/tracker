@@ -1,0 +1,12 @@
+[Unit]
+Description=Device tracking for home automation
+Wants=network.target
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+ExecStart=/usr/bin/python3 -m tracker -c /etc/tracker/tracker.yaml
