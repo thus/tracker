@@ -11,11 +11,16 @@ setup(
     author="Mats Klepsland",
     author_email='mats.klepsland@gmail.com',
     packages=[
-        'tracker',
+        'tracker', 'tracker.modules'
     ],
     package_dir={'tracker':
                  'tracker'},
     include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'tracker=tracker.tracker:main'
+        ],
+    },
     install_requires=[],
     zip_safe=False,
     keywords='tracker',

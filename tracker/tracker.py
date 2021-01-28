@@ -18,21 +18,21 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 import logging.config
 import signal
-import globals
+import tracker.globals
 
-from args import read_args
-from config import config_load
-from device import devices_start_tracking
+from tracker.args import read_args
+from tracker.config import config_load
+from tracker.device import devices_start_tracking
 
 
 def signal_handler(signum, frame):
     """Handle signals."""
-    globals.terminate = True
+    tracker.globals.terminate = True
 
 
 def main():
     """Run main function."""
-    globals.initialize()
+    tracker.globals.init()
 
     signal.signal(signal.SIGINT, signal_handler)
 

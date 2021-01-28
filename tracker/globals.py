@@ -17,7 +17,7 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-def initialize():
+def init():
     """Initialize global variables."""
     global terminate
     terminate = False

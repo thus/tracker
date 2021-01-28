@@ -19,7 +19,8 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 import time
 import socket
 import logging
-import globals
+import tracker.globals
+
 from pyroute2 import IPRoute
 
 
@@ -68,7 +69,7 @@ class TrackerDeepSleep:
                     return True
 
             for i in range(self.config["retry_interval"]):
-                if globals.terminate:
+                if tracker.globals.terminate:
                     return None
                 time.sleep(1)
 

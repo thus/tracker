@@ -20,10 +20,10 @@ import sys
 import time
 import logging
 import multiprocessing
-import globals
 import paho.mqtt.client as mqtt
+import tracker.globals
 
-from modules import TrackerModule
+from tracker.modules import TrackerModule
 
 
 def on_connect(client, userdata, flags, rc):
@@ -83,7 +83,7 @@ def connect_mqtt(name, config):
     try:
         client.connect(config["mqtt"]["broker"], port=config["mqtt"]["port"])
     except ConnectionRefusedError as ex:
-        globals.terminate = True
+        tracker.globals.terminate = True
         logging.critical("Could not connect to MQTT: %s" % ex)
         sys.exit(1)
 
@@ -93,7 +93,7 @@ def connect_mqtt(name, config):
         time.sleep(.01)
 
     if conn_err:
-        globals.terminate = True
+        tracker.globals.terminate = True
         logging.critical("Could not connect to MQTT: [Errno %d] %s" %
                          (conn_rc, conn_err))
         sys.exit(1)
@@ -114,12 +114,12 @@ def device_track(name, device, config):
 
     if m.init() is False:
         logging.critical("Error initializing '%s'. Terminating." % name)
-        globals.terminate = True
+        tracker.globals.terminate = True
         return
 
     last_state = None
 
-    while not globals.terminate:
+    while not tracker.globals.terminate:
         home = m.track()
         if home:
             state = config["state"]["home"]
@@ -140,7 +140,7 @@ def device_track(name, device, config):
             last_state = state
 
         for i in range(m.module.config["interval"]):
-            if globals.terminate:
+            if tracker.globals.terminate:
                 break
             time.sleep(1)
 
