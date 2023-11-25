@@ -25,7 +25,7 @@ for other devices as well.
 This module basically uses the same detection strategy as implemented by Magnus
 Nyström (mudape) in [iphonedetect](https://github.com/mudape/iphonedetect).
 I had to do my own implementation, since I wanted to track devices on an other
-subnet then the Home Assistant server, which would not work with iphonedetect,
+subnet than the Home Assistant server, which would not work with iphonedetect,
 since the server was not getting ARP table entries for the devices.
 
 ## Installation
